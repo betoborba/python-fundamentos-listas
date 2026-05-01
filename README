@@ -70,7 +70,7 @@ print(feira.index('mamão')) # 0
 > > > Out: ['cenoura', 'abacate', 'couve', 'banana', 'tomate', 'mamão', 'mamão', 'pastel']
 ```
 
-- Inserir em qualquer posição da lista .insert()
+- Inserir em qualquer posição da lista `.insert()`
 
 ```python
 > > > feira.insert(0,'pastel') # Pastel incluido no inicio da lista.
@@ -79,3 +79,56 @@ print(feira.index('mamão')) # 0
 > >
 > > > Out: ['pastel','cenoura', 'abacate', 'couve', 'banana', 'tomate', 'mamão', 'mamão', 'pastel']
 ```
+
+- O método `.insert()` permite inserir um valor em qualquer posição, o primeiro argumento passsado para insert indica o índice no qual o novo valor será inserido.
+
+- Os métodos pertencem a um único tipo de dado.
+
+## Removendo valores
+
+```python
+feira = ['abóbora', 'cenoura', 'mandioca', 'beterraba']
+>>> feira.remove('beterraba')
+>>> out: ['abóbora', 'cenoura', 'mandioca']
+
+```
+
+- Se um valor aparecer mais de uma vez na lista o método `.remove()` apenas a primeira ocorrência:
+
+```python
+>>> feira = ['pastel', 'garapa', 'pastel', 'cenoura']
+>>> feira.remove('pastel')
+>>> Out: ['garapa', 'pastel', 'cenoura']
+
+```
+
+## Ordenar Valores
+
+- Utilizando o método `.sort()` retorna os números em ordem númerica e as strings em ordem alfabética
+
+```python
+>>> feira = [2, 5, 3.14, 1, -7]
+>>> feira.sort()
+>>> Out: [-7, 1, 2, 3.14, 5] # Retorno em ordem númerica mesmo com números float
+```
+
+```python
+>>> feira = ['banana', 'queijo', 'tapioca', 'gato']
+>>> feira.sort()
+>>>Out ['banana', 'gato', 'queijo', 'tapioca'] # Retorno da lista em ordem alfabética
+```
+
+- Utilizando `.sort(reverse=True)`
+
+```python
+>>> feira = ['banana', 'gato', 'queijo', 'tapioca']
+>>> feira.sort(reverse=True)
+>>>Out: ['tapioca', 'queijo', 'gato', 'banana']
+```
+
+- Observações importantes:
+
+- `.sort()` ordena na lista local por isso não é possível capturar o seu retorno com instruções:
+- `feira = feira.sort()`
+
+- Outro ponto é que não é possível ordenar listas que contenham uma mistura de valores numéricos e strings.
