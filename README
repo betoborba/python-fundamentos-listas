@@ -1,0 +1,81 @@
+## Operadores de atribuições e compostos
+
+Os operadores `+` e `*`, que funcionam como strings, também operam da mesma forma com listas
+
+```python
+
+> > > spam = 42
+> > > spam = spam + 1
+> > > spam
+> > > 43
+
+```
+
+Outro atalho para essa operação, operador de atribuição composto:
+
+```python
+
+> > > spam = 42
+> > > spam += 1
+> > > spam
+> > > 43
+```
+
+### Outros operadores:
+
+`+`, `-`, `*`, `/`, `%`
+
+- `+` → adição
+- `-` → subtração
+- `*` → multiplicação
+- `/` → divisão
+- `%` → módulo
+
+O operador `+=` também pode ser usado para concatenar strings e listas.
+
+```python
+> > > spam = 'hello'
+> > > spam += ' Mundo!' # O mesmo que spam = spam + ' Mundo!'
+> > > spam
+> > > 'hello Mundo!'
+```
+
+## Métodos
+
+Um método é semelhante a uma função, com a diferença que ele é chamado apartir de um valor.
+Podemos pensar em um método como uma função que está sempe associada a um valor.
+Os métodos podem ser úteis para localizar, adicionar, remover e manipular valores em uma lista.
+
+```python
+> > > feira = ['cenoura', 'abacate', 'couve', 'banana', 'tomate']
+> > > feira.index('tomate')
+> > > 4 # Posição do índice da lista = tomate
+```
+
+Quando a lista possui valores duplicados, o método retorna o indice da primeira ocorrência:
+
+```python
+>>> feira = ['mamão','cenoura','abacate','couve','banana','tomate','mamão']
+print(feira.index('mamão')) # 0
+```
+
+- Adicionar valores Métodos `.append()` adiciona ao final da lista
+
+```python
+> > > feira = ['mamão','cenoura', 'abacate', 'couve', 'banana', 'tomate', 'mamão']
+> > > feira.append('pastel')
+
+> > feira
+> >
+> > > Out: ['cenoura', 'abacate', 'couve', 'banana', 'tomate', 'mamão', 'mamão', 'pastel']
+```
+
+- Inserir em qualquer posição da lista .insert()
+
+```python
+> > > feira.insert(0,'pastel') # Pastel incluido no inicio da lista.
+
+> > feira
+> >
+> > > Out: ['pastel','cenoura', 'abacate', 'couve', 'banana', 'tomate', 'mamão', 'mamão', 'pastel']
+```
