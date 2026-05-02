@@ -132,3 +132,67 @@ feira = ['abóbora', 'cenoura', 'mandioca', 'beterraba']
 - `feira = feira.sort()`
 
 - Outro ponto é que não é possível ordenar listas que contenham uma mistura de valores numéricos e strings.
+- O método sort utiliza ordem alfabética baseada na tabela ASCII e não a ordem alfabética tradicional para classificar strings.
+
+```python
+
+>>> feira = ['beterraba', 'Melancia', 'pastel' , 'Banana', 'Cebola' ]
+>>> feira.sort()
+>>> Out:['Banana', 'Cebola', 'Melancia', 'beterraba', 'pastel']
+
+```
+
+- Para ordenar os valores em ordem alfabética tradicional:
+
+```python
+
+>>> spam = ['a', 'z', 'A', 'Z']
+>>> spam.sort(key=str.lower) # Trata todos os itens da lista como minúscula
+>>> Out: ['a', 'A', 'z', 'Z']
+
+```
+
+## Inverter Valores
+
+- Para inverter valores da lista `reverse.()`
+
+```python
+>>> animais = ['gato', 'cachorro', 'rato' ]
+>>> animais.reverse()
+>>>Out: ['rato', 'cachorro', 'gato']
+
+```
+
+## Operadores booleanos com curto-circuito
+
+- Ao utilizar o perador `and`, se um dos valores for `False` toda expressão será `False`. Da mesma forma se um dos operadores combinados pelo operador `or` `for` `True`
+
+```python
+
+>>> animais = ['gato', 'cachorro']
+>>> if animais[0] == 'gato': # Da forma que está escrito o programa retorna
+        print('O gato é o primeiro da lista')
+    else:
+        print('O primeiro não é o gato.')
+```
+
+- Da forma acima, se a lista estiver vazia a instrução `animais[0]` causará erro do tipo:
+
+- `IndexError: list index out of range`
+
+- Para evitar esse erro podemos ajustar com na condição `if`
+
+```python
+>>> animais =[]
+>>> if len(animais) > 0 and animais[0] == 'gato':
+        print('O gato é o primeiro da lista')
+    else:
+        print('O primeiro não é o gato.')
+```
+
+- Esse programa nunca apresenta um erro porque se `len(animais) > 0` for `False` o curto circuito
+  do operador `and`impede que python avalie o trecho `animais[0]`
+
+## Selecionar itens aleatórios em uma lista
+
+- `random.choice(mensagens)`executa a mesma ação que `random.randint(0, len(mensagens)- 1)`.
