@@ -11,4 +11,4 @@ mensagens = ['É certo',
     'muito duvidoso']
 print('Faça uma pergunta')
 input('>')  # A chamada random.randit gera um número aleatório que será utilizado como índice até -1
-print(mensagens[random.randint(0, len(mensagens)- 1)])
+print(mensagens[random.randint(0, len(mensagens)- 1)]) # len retorna a quantidade da lista

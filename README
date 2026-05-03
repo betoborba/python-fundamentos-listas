@@ -196,3 +196,170 @@ feira = ['abóbora', 'cenoura', 'mandioca', 'beterraba']
 ## Selecionar itens aleatórios em uma lista
 
 - `random.choice(mensagens)`executa a mesma ação que `random.randint(0, len(mensagens)- 1)`.
+
+## Tipos de dados sequenciais
+
+- As listas não são os únicos tipos de dados que representam sequencia ordenada de valores,
+  strings são bastante semelhantes a listas pois são compostas por caracteres individuais.
+
+```Python
+
+>>> nome = ' Valéria '
+>>> nome[0]
+>>> Out: 'V'
+
+>>> nome[3]
+>>> Out: 'é'
+
+>>> nome[0:4]
+>>>Out: 'Valé'
+
+>>> 'lé' in nome
+>>> Out: True
+
+>>> 'b' in nome
+>>> Out: False
+
+>>> 'Va' not in nome
+>>> Out: False
+
+>>> nome = 'Valéria'
+for i in nome:
+    print('* * * ' + i + ' * * * ')
+
+* * * V * * *
+* * * a * * *
+* * * l * * *
+* * * é * * *
+* * * r * * *
+* * * i * * *
+* * * a * * *
+
+```
+
+- Portanto podemos realizar com valor sequencial as mesmas operações aplicadas nas listas. Como indexação, `slice`, `loops for`, uso da função `len()`, e operadores `in` e `not in`
+
+## Tipos de dados mutáveis e imutáveis
+
+- Lista é um tipo de dado mutável: podemos adicionar, remover e modificar seus valores
+- Strings = imutável. Ou seja ela não pode ser alterada.
+
+```python
+
+>>> nome = 'João é brasileiro'
+>>> nome[6] = 'o'
+
+TypeError                                 Traceback (most recent call last)
+Cell In [2], line 1
+----> 1 nome[6] = 'o'
+
+TypeError: 'str' object does not support item assignment
+
+```
+
+- A forma correta de modificarmos uma string é por meio do fatiamento e concatenação.
+
+```python
+
+>>> nome = 'João é brasileiro'
+ # :5 pega do início até a posição 5
+>>> novo_nome = nome[0:5] + 'o' + nome[6:17] # 6: pega do 6 até o final (sem precisar saber o tamanho)
+
+>>> novo_nome
+>>> Out: 'João o brasileiro'
+
+```
+
+- Um exemplo de como não é modificado:
+
+```python
+>>> suprimentos = ['A', 'B', 'C']
+>>> suprimentos = ['x', 'y', 'z']
+>>> suprimentos
+>>> Out: ['x', 'y', 'z']
+
+```
+
+## Modificação de lista local
+
+- No caso acima, ao valor não está sendo modificado e sim substituido por uma lista nova.
+  Neste caso para alterar o conteúdo da lista é necessário utilizar `del`e o método `append()`
+
+```python
+>>> suprimentos = ['A', 'B', 'C']
+>>> del suprimentos[2]
+>>> del suprimentos[1]
+>>> del suprimentos[0]
+>>> suprimentos.append('x')
+>>> suprimentos.append('y')
+>>> suprimentos.append('z')
+>>> suprimentos
+>>>Out: ['x', 'y', 'z']
+
+```
+
+- Na primeira tentativa quiz remover os itens da lista da seguinte forma:
+
+```python
+
+suprimentos = ['A', 'B', 'C']
+
+del suprimentos[0]  # remove 'A'
+del suprimentos[1]  # remove 'C'
+del suprimentos[2]  #  erro aqui
+
+```
+
+- Isso acontece porque quebra o índice, então para remover itens é necessário ser do fim para o começo.
+
+## Tipo de dado tupla
+
+- Existem apenas duas diferenças entre o tipo de dado tupla e o tipo de lista. A primeira é que tuplas são escritas com parênteses em vez de colchetes.
+
+```python
+
+casa_tem = ('rádio', 'tv', 42, 0.5)
+casa_tem[0]
+Out: 'rádio'
+
+>>> casa_tem[2:4]
+Out: (42, 0.5)
+
+>>> len(casa_tem)
+Out: 4
+
+```
+
+- A segunda diferença é que assim como as strings as tuplas são imutáveis:
+
+```python
+casa_tem = ('rádio', 'tv', 42, 0.5)
+casa_tem[2] = 99
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+Cell In [10], line 1
+----> 1 casa_tem[2] = 99
+
+TypeError: 'tuple' object does not support item assignment
+
+```
+
+- Observação se uma tupla tiver apenas um valor, é preciso indicar isso com uma vírgula após o valor entre parenteses. Se não python interpreta como um agrupamento de valor entre parenteses comuns.
+
+a = (1) # int
+b = (1,) # tupla
+c = 1, # tupla (nem precisa de parênteses)
+d = (1, 2) # tupla normal
+
+```python
+
+x = (5) # int
+
+print(type(x))
+<class 'int'>
+
+x = (5,) # tupla
+
+print(type(x))
+<class 'tuple'>
+```
