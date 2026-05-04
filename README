@@ -363,3 +363,98 @@ x = (5,) # tupla
 print(type(x))
 <class 'tuple'>
 ```
+## Conversões entre listas e tuplas
+
+- Assim como `str(42)` retorna '42', a representação em strig do número inteiro 42, as funções `list()` e `tuple()`retornarão, respectivamente as versões em lista tupla dos valores fornecidos como argumento. 
+
+```python
+
+tuple(['gato', 'cachorro', 5 ])
+Out: ('gato', 'cachorro', 5)
+
+list(('gato', 'cachorro', 5))
+Out: ['gato', 'cachorro', 5]
+
+list('papibaquígrafo')
+Out: ['p', 'a', 'p', 'i', 'b', 'a', 'q', 'u', 'í', 'g', 'r', 'a', 'f', 'o']
+
+```
+- Converter uma tupla em lista é útil quando precisamos de uma versão mutável de um valor originalmente imutável. 
+
+## Referências 
+
+- A melhor metáfora para considerar é variáveis são como etiquetas de nome, fixadas aos valores com um barbante.
+
+```python
+spam = 42
+eggs = spam
+spam = 99
+spam 
+out: 99
+eggs
+Out: 42
+
+```
+
+- Ao atribuir o valor 42 à variável spam, o que acontece é a criação do valor 42 na memória do computador, ou seja a variável spam armazena esse valor. Quando é copiaddo ao valor de spam e é atribuido à variável eggs, está sendo copiado essa referência. Daí as duas variáveis possuem a mesma referência 42 na memória do computador. Como se a etiqueta estivesse fixa ao mesmo valor 42. E quando atribuimos 99 ao spam estamos apenas alterando a referência. 
+
+- Para listas o comportamento acaba sendo diferente:
+
+```python
+
+>>> spam = [0, 1, 2, 3]
+>>> eggs = spam # A referência, e não a lista em si, está sendo copiada 
+
+>>> eggs[1] = 'Olá mundo' # Isso altera o valor da lista 
+>>> spam 
+Out: [0, 'Olá mundo', 2, 3]
+
+>>> eggs # A variável eggs faz referência a mesma lista
+Out: [0, 'Olá mundo', 2, 3]
+
+```
+
+ - Ao criar a primeira lista spam é atribuida a variável. Na linha seguinte é copiado apenas a referência da lista armazena em spam para eggs. Ou seja ainda há apenas 1 única lista. E agora tanto eggs quanto spam fazem referência à essa lista. 
+
+ - Observações importantes: 
+
+- Em python, variáveis nunca contém valores. Elas armazenam apenas referências a valores. 
+
+- Em python, o operador de atribuição = copia apenas referências. Ele nunca copia valores em si. 
+
+## Argumentos 
+
+- Quando uma função é chamada, python copia a referência dos argumentos para as variáveis de parâmetro. 
+
+```python
+
+def cozinha(item_parametro):
+    item_parametro.append('geladeira')
+
+
+panela = [1, 2, 3]
+cozinha(panela)
+print(panela)  # Exibe na tela [1, 2, 3, 'geladeira']
+
+```
+
+- Ao chamarmos `cozinha()`, nenhum valor de retorno é atribuido a variável panela. Em vez disso a lista é modificada diretamente no local.  Mesmo que `panela` e `item_parametro`contenham referências disitintas, ambas apontam para a mesma lista. 
+
+## Funções copy() e deppcopy()
+
+- Módulo copy, disponibiliza as funções `copy()` e `deepcopy()`. A primeira delas, `copy()`, permite criar uma cópia duplicada de um valor mutável. 
+
+```python
+
+>>> import copy
+>>> spam = ['A', 'B', 'C']
+>>> queijo = copy.copy(spam) # Cria uma cópia duplicada da lista 
+>>> queijo[1] = 42
+>>> spam  # A variável spam permance inalterada
+Out: ['A', 'B', 'C']
+>>> queijo # A variável queijo foi modificada. 
+Out: ['A', 42, 'C']
+
+```
+
+- A variáveis spam e queijo referem-se a listas distintas, é por isso que apenas em queijo é modificada. Se a lista que necessita copiar tiver outras listas, é necessário utilizar a função `copy.deepcopy()`. Essa função copia listas internas. 
